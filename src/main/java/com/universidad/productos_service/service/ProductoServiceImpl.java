@@ -4,6 +4,8 @@ import com.universidad.productos_service.domain.Producto;
 import com.universidad.productos_service.repository.ProductoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
@@ -44,6 +46,11 @@ public class ProductoServiceImpl implements ProductoService {
         return productoRepository.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Producto no encontrado: " + id));
+    }
+
+    @Override
+    public List<Producto> listarTodos() {
+        return productoRepository.findAll();
     }
 
     @Override
